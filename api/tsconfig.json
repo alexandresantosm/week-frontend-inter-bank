@@ -5,9 +5,7 @@
     "module": "commonjs",
     "rootDir": "./src",
     "outDir": "./build",
-    "paths": {
-      "@/*": ["*"]
-    },
+    // "paths": {"@/*": ["*"]},
     "esModuleInterop": true,
     "strict": true,
     "emitDecoratorMetadata": true,
