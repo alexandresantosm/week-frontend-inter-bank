@@ -11,7 +11,11 @@ export class UserController {
   }
 
   async signup(req: Request, res: Response) {
-    return res.send('Cadastrando um usuário');
+    const userData = req.body;
+    const userService = new UserService();
+    const userCreated = await userService.signup(userData);
+
+    res.status(201).send(userCreated);
   }
 
   async me(req: Request, res: Response) {
