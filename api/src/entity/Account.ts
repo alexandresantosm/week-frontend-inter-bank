@@ -17,6 +17,9 @@ export class Account {
   @Column()
   digit: number;
 
+  @Column({ default: 0 })
+  wallet: number;
+
   @CreateDateColumn()
   createdAt: Date;
 
