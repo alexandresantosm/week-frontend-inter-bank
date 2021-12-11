@@ -20,7 +20,7 @@ export class User {
   @Column()
   lastName: string;
 
-  @OneToOne(() => Account, account => account.id)
+  @OneToOne(() => Account, account => account.id, { cascade: true })
   @JoinColumn()
   account: Account;
 
