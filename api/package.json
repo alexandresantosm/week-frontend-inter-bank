@@ -12,6 +12,9 @@
   "dependencies": {
     "crypto-js": "^4.1.1",
     "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "pg": "^8.7.1",
+    "postgre": "^0.1.8",
     "typeorm": "^0.2.41"
   },
   "devDependencies": {
