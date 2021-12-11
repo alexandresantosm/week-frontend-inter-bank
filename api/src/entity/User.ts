@@ -18,7 +18,7 @@ export class User {
   firstName: string;
 
   @Column()
-  lastName: number;
+  lastName: string;
 
   @OneToOne(() => Account, account => account.id, { nullable: true })
   @JoinColumn()
