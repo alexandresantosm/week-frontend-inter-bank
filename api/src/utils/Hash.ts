@@ -1,5 +1,5 @@
 import md5 from 'crypto-js/md5';
 
-export const encode = (value: string) => {
+export const encodeHash = (value: string) => {
   return md5(value).toString();
 };
