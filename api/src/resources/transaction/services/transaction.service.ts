@@ -116,15 +116,17 @@ export class TransactionService {
       updatedAt: transaction.updatedAt,
       type: 'received',
     }));
+
     const paying = transactionPaying.map(transaction => ({
       value: transaction.value,
       user: {
-        firstName: transaction.payingUser.firstName,
-        lastName: transaction.payingUser.lastName,
+        firstName: transaction.requestingUser.firstName,
+        lastName: transaction.requestingUser.lastName,
       },
       updatedAt: transaction.updatedAt,
       type: 'paid',
     }));
+
     const allTransactions = [...received, ...paying];
     allTransactions.sort(function (a, b) {
       const dateA = new Date(a.updatedAt).getTime();
