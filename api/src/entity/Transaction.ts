@@ -22,7 +22,7 @@ export class Transaction {
 
   @ManyToOne(() => User, user => user.id)
   @JoinColumn()
-  requestUser: User;
+  requestingUser: User;
 
   @ManyToOne(() => User, user => user.id, { nullable: true })
   payingUser: User;
