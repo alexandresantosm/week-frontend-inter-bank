@@ -1,6 +1,6 @@
 import { AppError } from '../../../shared/error/AppError';
 import {
-  encode,
+  encodeHash,
   generateAccountDigit,
   generateToken,
   generateAccountNumber,
@@ -8,13 +8,12 @@ import {
 import { UserSignInDTO, UserSignUpDTO } from '../dtos';
 import { getRepository } from 'typeorm';
 import { Account, User } from '../../../entity';
-import { authConfig } from '../../../config/auth';
 
 export class UserService {
   async signin(user: UserSignInDTO) {
     const userRepository = getRepository(User);
     const { email, password } = user;
-    const passwordHash = encode(password);
+    const passwordHash = encodeHash(password);
 
     const existUser = await userRepository.findOne({
       relations: ['account'],
@@ -25,7 +24,6 @@ export class UserService {
       throw new AppError('Usuário não encontrado', 401);
     }
 
-    const { secret, expiresIn } = authConfig.jwt;
     const { id, firstName, lastName, account } = existUser;
     const body = {
       firstName,
@@ -34,11 +32,8 @@ export class UserService {
       accountDigit: account.digit,
       wallet: account.wallet,
     };
-    const validate = {
-      subject: id,
-      expiresIn,
-    };
-    const token = generateToken(body, secret, validate);
+
+    const token = generateToken(body, id);
 
     // @ts-expect-error ignore
     delete existUser.password;
@@ -56,7 +51,7 @@ export class UserService {
       throw new AppError('Já existe um usuário cadastrado com esse email', 401);
     }
 
-    const passwordHash = encode(user.password);
+    const passwordHash = encodeHash(user.password);
     const newAccount = new Account();
     newAccount.number = generateAccountNumber();
     newAccount.digit = generateAccountDigit();
@@ -69,7 +64,6 @@ export class UserService {
     userData.account = newAccount;
 
     const userCreated = await userRepository.save(userData);
-    const { secret, expiresIn } = authConfig.jwt;
 
     const { id, firstName, lastName, account } = userCreated;
     const body = {
@@ -79,11 +73,8 @@ export class UserService {
       accountDigit: account.digit,
       wallet: account.wallet,
     };
-    const validate = {
-      subject: id,
-      expiresIn,
-    };
-    const token = generateToken(body, secret, validate);
+
+    const token = generateToken(body, id);
 
     return { accessToken: token };
   }
