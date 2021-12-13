@@ -21,7 +21,8 @@ export class TransactionController {
   async transactions(req: Request, res: Response) {
     const transactionService = new TransactionService();
     const user = req.user;
+
     const transactions = await transactionService.transactions(user);
-    return transactions;
+    return res.status(200).send(transactions);
   }
 }
