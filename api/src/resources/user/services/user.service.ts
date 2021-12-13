@@ -78,4 +78,29 @@ export class UserService {
 
     return { accessToken: token };
   }
+
+  async me(user: Partial<User>) {
+    const userRepository = getRepository(User);
+    const currentUser = await userRepository.findOne({
+      relations: ['account'],
+      where: { id: user.id },
+    });
+
+    if (!currentUser) {
+      throw new AppError('Usuário não encontrado', 401);
+    }
+
+    const { id, firstName, lastName, email, account } = currentUser;
+    const { number, digit, wallet } = account;
+
+    return {
+      id,
+      firstName,
+      lastName,
+      email,
+      accountNumber: number,
+      accountDigit: digit,
+      wallet,
+    };
+  }
 }
