@@ -19,6 +19,9 @@ export class UserController {
   }
 
   async me(req: Request, res: Response) {
-    return res.send('Mostrando dados do usuário');
+    const user = req.user;
+    const userService = new UserService();
+    const currentUser = await userService.me(user);
+    return res.status(200).send(currentUser);
   }
 }
