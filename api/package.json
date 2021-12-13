@@ -1,14 +1,14 @@
 {
   "name": "inter-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Api desenvolvida na Semana Frontend Banco Inter",
   "main": "index.js",
   "scripts": {
     "start:dev": "nodemon src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Alexandre Santos",
+  "license": "MIT",
   "dependencies": {
     "crypto-js": "^4.1.1",
     "express": "^4.17.1",
