@@ -7,7 +7,7 @@ const transactionController = new TransactionController();
 transactionRouter.use(userAuthenticated);
 
 transactionRouter.post('/request', transactionController.request);
-transactionRouter.post('/pay:key', transactionController.pay);
+transactionRouter.post('/pay/:key', transactionController.pay);
 transactionRouter.get('/transactions', transactionController.transactions);
 
 export { transactionRouter };
