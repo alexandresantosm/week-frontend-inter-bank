@@ -25,13 +25,13 @@ export const Background = styled.div<BackgroundProps>`
 `;
 
 export const InputContainer = styled.div`
-  width: 90vw;
+  width: 90%;
   margin-top: 4rem;
   flex: 1;
 `;
 
 export const ButtonContainer = styled.div`
-  width: 90vw;
+  width: 90%;
   margin-top: 1.25rem;
   display: flex;
   align-items: center;
