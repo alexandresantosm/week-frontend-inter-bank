@@ -7,8 +7,9 @@ export const ButtonContainer = styled.button`
   background-color: ${({ theme }) => theme.colors.primary};
   border: 1px solid ${({ theme }) => theme.colors.primary};
   border-radius: 0.625rem;
-  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
   display: flex;
+  align-items: center;
   justify-content: center;
   z-index: 5000;
   &:hover {
