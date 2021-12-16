@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const DashboardBackground = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -14,10 +14,13 @@ export const BodyContainer = styled.main`
   margin-top: 2.5rem;
   display: flex;
   justify-content: space-between;
-  > div {
+  > section {
     flex: 1;
     & > div {
       margin-bottom: 1.25rem;
+    }
+    &:nth-child(2) {
+      display: flex;
       justify-content: flex-end;
     }
   }
