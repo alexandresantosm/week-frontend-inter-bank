@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Background, ButtonContainer, InputContainer, Wrapper } from "./styles";
 
@@ -6,6 +6,10 @@ import BackgroundImage from "../../assets/images/background-login.jpg";
 import { Card, Logo, Input, Button } from "../../components";
 
 export const SignIn = () => {
+  const navigate = useNavigate();
+  const handleToSignIn = () => {
+    navigate("/dashboard");
+  };
   return (
     <Wrapper>
       <Background image={BackgroundImage} />
@@ -16,7 +20,9 @@ export const SignIn = () => {
           <Input placeholder="Senha" type="password" />
         </InputContainer>
         <ButtonContainer>
-          <Button type="button">Entrar</Button>
+          <Button type="button" onClick={handleToSignIn}>
+            Entrar
+          </Button>
           <p>
             Ainda não é cadastrado? <Link to="/signup">Cadrastre-se Já</Link>
           </p>
