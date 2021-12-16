@@ -1,3 +1,12 @@
+import { Header } from "../../components";
+
+import { DashboardBackground, BodyContainer } from "./styles";
+
 export const Dashboard = () => {
-  return <div>Dashboard</div>;
+  return (
+    <DashboardBackground>
+      <Header />
+      <BodyContainer></BodyContainer>
+    </DashboardBackground>
+  );
 };
