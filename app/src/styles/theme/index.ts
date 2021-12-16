@@ -7,5 +7,7 @@ export const theme = {
     tertiary: COLORS.TERTIARY,
     background: COLORS.BACKGROUND,
     backgroundLight: COLORS.BACKGROUND_LIGHT,
+    red: COLORS.RED,
+    green: COLORS.GREEN,
   },
 };

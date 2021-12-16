@@ -4,4 +4,6 @@ export const COLORS = {
   TERTIARY: "#E8E8E8",
   BACKGROUND: "#FFFFFF",
   BACKGROUND_LIGHT: "#FBFCFF",
+  RED: "#E72424",
+  GREEN: "#15B138",
 };
