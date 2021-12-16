@@ -6,7 +6,7 @@ export const InputContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.background};
   border: 1px solid ${({ theme }) => theme.colors.primary};
   border-radius: 0.625rem;
-  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
   display: flex;
   justify-content: center;
   z-index: 5000;
