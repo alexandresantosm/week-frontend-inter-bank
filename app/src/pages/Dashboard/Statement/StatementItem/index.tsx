@@ -1,3 +1,5 @@
+import { FiDollarSign } from "react-icons/fi";
+
 import { currencyFormatter, dateFormatter } from "../../../../utils/Formatters";
 
 import {
@@ -28,7 +30,9 @@ export const StatementItem = ({
   const statementType = type === "pay" ? "PAGO A" : "RECEBIDO DE";
   return (
     <StatementItemContainer>
-      <StatementItemImage type={type}>Icone</StatementItemImage>
+      <StatementItemImage type={type}>
+        <FiDollarSign size={24} />
+      </StatementItemImage>
       <StatementItemInfo>
         <p className="primary-color">{valueFortamatted}</p>
         <p>
