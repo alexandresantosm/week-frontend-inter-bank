@@ -1,4 +1,4 @@
-import { currencyFormatter } from "../../../../utils/Formatters";
+import { currencyFormatter, dateFormatter } from "../../../../utils/Formatters";
 
 import {
   StatementItemContainer,
@@ -23,6 +23,7 @@ export const StatementItem = ({
   updatedAt,
 }: StatementItemProps) => {
   const valueFortamatted = currencyFormatter(value);
+  const dateFortamatted = dateFormatter(updatedAt);
   const fullName = user.firstName + " " + user.lastName;
   const statementType = type === "pay" ? "PAGO A" : "RECEBIDO DE";
   return (
@@ -33,7 +34,7 @@ export const StatementItem = ({
         <p>
           {statementType} <strong>{fullName.toUpperCase()}</strong>
         </p>
-        <p>{updatedAt.toString()}</p>
+        <p>{dateFortamatted}</p>
       </StatementItemInfo>
     </StatementItemContainer>
   );
