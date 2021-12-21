@@ -1,6 +1,6 @@
 import { api } from "../../api";
 
-interface SignInData {
+export interface SignInData {
   email: string;
   password: string;
 }
