@@ -1,3 +1,4 @@
+import { AxiosResponse } from "axios";
 import { createContext, useCallback, useEffect, useState } from "react";
 import { me } from "../services/resources/user/me-user-usecase";
 import {
@@ -21,8 +22,9 @@ interface UserDTO {
 
 interface ContextData {
   user: UserDTO;
-  userSignIn: (userData: SignInData) => void;
-  userSignUp: (userData: SignUpData) => void;
+  userSignIn: (userData: SignInData) => Promise<UserDTO>;
+  userSignUp: (userData: SignUpData) => Promise<UserDTO>;
+  me: () => Promise<AxiosResponse<UserDTO, any>>;
 }
 
 export const AuthContext = createContext<ContextData>({} as ContextData);
@@ -40,12 +42,12 @@ export const AuthProvider: React.FC = ({ children }) => {
       localStorage.setItem("@Inter:Token", data.accessToken);
     }
 
-    await getCurrentUser();
+    return await getCurrentUser();
   };
   const userSignUp = async (userData: SignUpData) => {
     const { data } = await signUp(userData);
     localStorage.setItem("@Inter:Token", data.accessToken);
-    await getCurrentUser();
+    return await getCurrentUser();
   };
   const getCurrentUser = async () => {
     const { data } = await me();
@@ -54,7 +56,7 @@ export const AuthProvider: React.FC = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, userSignIn, userSignUp }}>
+    <AuthContext.Provider value={{ user, userSignIn, userSignUp, me }}>
       {children}
     </AuthContext.Provider>
   );
