@@ -1,6 +1,6 @@
 > # APP Semana Frontend Banco Inter
 
-[Translate to 🇺🇸](/Readme.md)
+[Translate to 🇺🇸](../README.md)
 
 <img src="./app-screenshot.png" alt="Captura de tela durante o desenvolvimento do APP">
 
