@@ -7,7 +7,7 @@ export const data: StatementItemProps[] = [
       lastName: "Henrique",
     },
     value: 250.0,
-    type: "pay",
+    type: "paid",
     updatedAt: new Date(),
   },
   {
