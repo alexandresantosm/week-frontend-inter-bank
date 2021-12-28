@@ -24,13 +24,21 @@ interface ContextData {
   user: UserDTO;
   userSignIn: (userData: SignInData) => Promise<UserDTO>;
   userSignUp: (userData: SignUpData) => Promise<UserDTO>;
-  me: () => Promise<AxiosResponse<UserDTO, any>>;
+  getCurrentUser: () => Promise<UserDTO>;
 }
 
 export const AuthContext = createContext<ContextData>({} as ContextData);
 
 export const AuthProvider: React.FC = ({ children }) => {
-  const [user, setUser] = useState<UserDTO>({} as UserDTO);
+  const [user, setUser] = useState<UserDTO>(() => {
+    const user = localStorage.getItem("@Inter:User");
+
+    if (user) {
+      return JSON.parse(user);
+    }
+
+    return {} as UserDTO;
+  });
   const userSignIn = async (userData: SignInData) => {
     const { data } = await signIn(userData);
 
@@ -52,11 +60,14 @@ export const AuthProvider: React.FC = ({ children }) => {
   const getCurrentUser = async () => {
     const { data } = await me();
     setUser(data);
+    localStorage.setItem("@Inter:User", JSON.stringify(user));
     return data;
   };
 
   return (
-    <AuthContext.Provider value={{ user, userSignIn, userSignUp, me }}>
+    <AuthContext.Provider
+      value={{ user, userSignIn, userSignUp, getCurrentUser }}
+    >
       {children}
     </AuthContext.Provider>
   );
