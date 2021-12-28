@@ -13,7 +13,7 @@ export const StatementItemInfo = styled.div`
 `;
 
 interface StatementItemImageProps {
-  type: "pay" | "received";
+  type: "paid" | "received";
 }
 
 export const StatementItemImage = styled.div<StatementItemImageProps>`
@@ -27,5 +27,5 @@ export const StatementItemImage = styled.div<StatementItemImageProps>`
   justify-content: center;
   color: ${({ theme }) => theme.colors.background};
   background-color: ${({ type, theme }) =>
-    type === "pay" ? theme.colors.red : theme.colors.green};
+    type === "paid" ? theme.colors.red : theme.colors.green};
 `;

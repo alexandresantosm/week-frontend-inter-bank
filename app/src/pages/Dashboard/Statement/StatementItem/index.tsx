@@ -14,7 +14,7 @@ export interface StatementItemProps {
     lastName: string;
   };
   value: number;
-  type: "pay" | "received";
+  type: "paid" | "received";
   updatedAt: Date;
 }
 
@@ -25,9 +25,9 @@ export const StatementItem = ({
   updatedAt,
 }: StatementItemProps) => {
   const valueFortamatted = currencyFormatter(value);
-  const dateFortamatted = dateFormatter(updatedAt);
+  const dateFortamatted = dateFormatter(new Date(updatedAt));
   const fullName = user.firstName + " " + user.lastName;
-  const statementType = type === "pay" ? "PAGO A" : "RECEBIDO DE";
+  const statementType = type === "paid" ? "PAGO A" : "RECEBIDO DE";
   return (
     <StatementItemContainer>
       <StatementItemImage type={type}>
